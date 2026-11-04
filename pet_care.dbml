@@ -1,0 +1,66 @@
+// Cole este conteúdo em https://dbdiagram.io (New Diagram) para gerar o DER
+Table clientes {
+  id_cliente int [pk, increment]
+  nome varchar(100) [not null]
+  cpf varchar(14) [unique]
+  telefone varchar(20)
+  email varchar(100)
+}
+
+Table funcionarios {
+  id_funcionario int [pk, increment]
+  nome varchar(100) [not null]
+  cargo varchar(50) [not null]
+  telefone varchar(20)
+  salario decimal(10,2)
+}
+
+Table atendimentos {
+  id_atendimento int [pk, increment]
+  nome_pet varchar(100) [not null]
+  especie varchar(30) [not null]
+  tipo_servico varchar(50) [not null]
+  data_entrada date
+  data_retirada date
+  valor decimal(10,2) [not null]
+  status varchar(30) [not null, default: 'Agendado']
+  id_cliente int [not null]
+  id_funcionario int [not null]
+}
+
+Table produtos {
+  id_produto int [pk, increment]
+  nome varchar(100) [not null]
+  quantidade int [not null, default: 1]
+  situacao varchar(30) [not null, default: 'Em estoque']
+}
+
+Table etapas_atendimento {
+  id_etapa int [pk, increment]
+  nome_etapa varchar(100) [not null]
+  descricao text
+  status varchar(30) [not null, default: 'Pendente']
+  id_atendimento int [not null]
+}
+
+Table pagamentos {
+  id_pagamento int [pk, increment]
+  valor_pago decimal(10,2) [not null]
+  data_pagamento date [not null]
+  forma_pagamento varchar(30) [not null]
+  id_atendimento int [not null]
+}
+
+Table uso_produtos {
+  id_atendimento int [not null]
+  id_produto int [not null]
+  quantidade_utilizada int [not null, default: 1]
+  indexes { (id_atendimento, id_produto) [pk] }
+}
+
+Ref: atendimentos.id_cliente > clientes.id_cliente
+Ref: atendimentos.id_funcionario > funcionarios.id_funcionario
+Ref: etapas_atendimento.id_atendimento > atendimentos.id_atendimento [delete: cascade]
+Ref: pagamentos.id_atendimento > atendimentos.id_atendimento
+Ref: uso_produtos.id_atendimento > atendimentos.id_atendimento [delete: cascade]
+Ref: uso_produtos.id_produto > produtos.id_produto [delete: cascade]
