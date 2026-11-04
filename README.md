@@ -17,7 +17,7 @@ O petshop precisa acompanhar em um único lugar:
 ## 🛠️ Tecnologias
 
 - **SGBD:** MySQL 8.0.16+ ou MariaDB 10.2.1+ (necessário para as restrições `CHECK`)
-- **Modelagem:** [dbdiagram.io](https://dbdiagram.io)
+- **Modelagem:** [dbdiagram.io](https://dbdiagram.io/e/6aeb433cf1d298b573647b60/6aeba6aa7ded3580faad7616)
 - **Versionamento:** Git e GitHub
 - **Ferramentas de execução:** MySQL Workbench ou DBeaver
 
@@ -32,7 +32,7 @@ O petshop precisa acompanhar em um único lugar:
 
 ## 🔗 Links
 
-- **DER (dbdiagram.io):** [abrir diagrama](https://dbdiagram.io/e/SEU-LINK-DO-DER)
+- **DER (dbdiagram.io):** [abrir diagrama](https://dbdiagram.io/e/6aeb433cf1d298b573647b60/6aeba6aa7ded3580faad7616)
 - **Projeto Lógico:** [projeto_logico.png](projeto_logico.png)
 
 ## 🗂️ Modelo de dados
